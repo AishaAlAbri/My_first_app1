@@ -6,6 +6,7 @@
     <string name="subject">Subject</string>
     <string name="reply">Replying Date</string>
     <string name="edu">Educational institution</string>
+    <string name="send">Send</string>
     <string-array name="superviser">
         <item>Supervisor</item>
     </string-array>

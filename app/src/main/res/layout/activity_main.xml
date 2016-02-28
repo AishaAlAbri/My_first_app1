@@ -134,10 +134,19 @@
                     android:text="New Text"
                     android:id="@+id/reply"
                     android:layout_weight="1" />
+
+
             </LinearLayout>
 
 
             <!-- signature-->
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/send"
+                android:onClick="onSend"
+                android:id="@+id/button" />
         </LinearLayout>
 
 

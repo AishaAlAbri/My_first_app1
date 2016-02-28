@@ -10,4 +10,5 @@
     <string-array name="superviser">
         <item>اسم المشرف</item>
     </string-array>
+    <string name="send">ارسال </string>
 </resources>
