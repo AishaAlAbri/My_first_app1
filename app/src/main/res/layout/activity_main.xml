@@ -19,10 +19,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Login Form"
+        android:text="@string/lb1"
         android:id="@+id/textView"
+        android:textColor="#0d13a7"
+        android:textSize="50dp"
         android:layout_below="@+id/textView2"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
