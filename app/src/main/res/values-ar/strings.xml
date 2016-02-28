@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="form">استمارة استفسار</string>
+    <string name="name">الاسم</string>
+    <string name="phone">رقم الهاتف</string>
+    <string name="reply">تاريخ الرد</string>
+    <string name="subject">الموضوع</string>
+    <string name="edu">المؤسسة التعليمية</string>
+    <string-array name="superviser">
+        <item>اسم المشرف</item>
+    </string-array>
+</resources>
