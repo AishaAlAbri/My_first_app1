@@ -9,7 +9,7 @@ public class Inquiry extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.inquiry);
+        setContentView(R.layout.activity_inquiry);
 
 
     }
