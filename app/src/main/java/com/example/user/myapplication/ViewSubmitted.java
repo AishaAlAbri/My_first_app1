@@ -1,5 +1,6 @@
 package com.example.user.myapplication;
 
+import android.content.Intent;
 import android.preference.PreferenceActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,7 +54,10 @@ public class ViewSubmitted extends AppCompatActivity
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                Toast.makeText(ViewSubmitted.this,inquiryDataArray.get(position).getUserID()+"",Toast.LENGTH_LONG).show();
+                //Toast.makeText(ViewSubmitted.this,inquiryDataArray.get(position).getUserID()+"",Toast.LENGTH_LONG).show();
+                Intent i = new Intent(ViewSubmitted.this,SubmittedDetails.class);
+                i.putExtra("data",inquiryDataArray.get(position));
+                startActivity(i);
             }
 
             @Override
@@ -120,7 +124,7 @@ public class ViewSubmitted extends AppCompatActivity
             } catch (JSONException e) {
                 e.printStackTrace();
                 Log.d("Error: ", response);
-                Toast.makeText(this, "Error parsing JSON data."+response, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Error parsing JSON data.", Toast.LENGTH_SHORT).show();
             }
 
         } else {

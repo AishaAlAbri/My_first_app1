@@ -1,9 +1,11 @@
 package com.example.user.myapplication;
 
+import java.io.Serializable;
+
 /**
  * Created by Faisal on 2/29/2016.
  */
-public class InquiryData
+public class InquiryData implements Serializable
 {
     private int userID;
 
