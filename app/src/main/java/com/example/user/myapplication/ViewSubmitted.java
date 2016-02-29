@@ -27,6 +27,7 @@ import cz.msebera.android.httpclient.Header;
 public class ViewSubmitted extends AppCompatActivity
 {
     private ListView listView;
+    private ArrayAdapter arrayAdapter;
     private ArrayList<InquiryData> inquiryDataArray;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -46,25 +47,20 @@ public class ViewSubmitted extends AppCompatActivity
         {
             data.add(inquiryDataArray.get(i).getName());
         }
-        ArrayAdapter ad = new ArrayAdapter(this,android.R.layout.simple_list_item_1,data);
-        listView.setAdapter(ad);
+        arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,data);
+        listView.setAdapter(arrayAdapter);
 
-        listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                //Toast.makeText(ViewSubmitted.this,inquiryDataArray.get(position).getUserID()+"",Toast.LENGTH_LONG).show();
-                Intent i = new Intent(ViewSubmitted.this,SubmittedDetails.class);
-                i.putExtra("data",inquiryDataArray.get(position));
+                Intent i = new Intent(ViewSubmitted.this, SubmittedDetails.class);
+                i.putExtra("data", inquiryDataArray.get(position));
                 startActivity(i);
             }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent)
-            {
 
-            }
         });
     }
 
