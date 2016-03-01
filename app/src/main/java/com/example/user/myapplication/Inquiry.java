@@ -1,11 +1,13 @@
 package com.example.user.myapplication;
 
 import android.app.DatePickerDialog;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -17,11 +19,18 @@ public class Inquiry extends AppCompatActivity {
     private EditText etDate;
     private SimpleDateFormat dateFormatter;
     private DatePickerDialog datePickerDialogStart;
+    private DrawingView drawingView;
+    private LinearLayout linearDrawing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inquiry);
+
+        drawingView = new DrawingView(this);
+        linearDrawing = (LinearLayout) findViewById(R.id.linearDrawing);
+        linearDrawing.addView(drawingView);
+
         etDate = (EditText) findViewById(R.id.editTextDate);
         dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
         setDateField();
