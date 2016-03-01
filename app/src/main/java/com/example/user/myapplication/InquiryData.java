@@ -1,5 +1,10 @@
 package com.example.user.myapplication;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+import android.util.Log;
+
 import java.io.Serializable;
 
 /**
@@ -17,6 +22,8 @@ public class InquiryData implements Serializable
     private String supervisor;
     private String replyDate;
     private String signature;
+
+
 
 
 
@@ -60,9 +67,12 @@ public class InquiryData implements Serializable
         return replyDate;
     }
 
-    public String getSignature()
+    public Bitmap getSignature()
     {
-        return signature;
+        byte[] decodedString = Base64.decode(signature, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        Log.d("image: ",signature);
+        return decodedByte;
     }
 
 

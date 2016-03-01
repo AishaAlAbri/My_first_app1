@@ -34,7 +34,8 @@ public class SubmittedDetails extends AppCompatActivity
         tvInstitute.setText("Institute: " +inquiryData.getInstitute());
         tvSubject.setText("Subject: " +inquiryData.getSubject());
         tvSupervisor.setText("Supervisor: " +inquiryData.getSupervisor());
-        tvReplayDate.setText("Replay Date: " +inquiryData.getReplyDate());
+        tvReplayDate.setText("Reply Date: " +inquiryData.getReplyDate());
+        imageSignature.setImageBitmap(inquiryData.getSignature());
 
     }
 }
