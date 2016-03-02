@@ -68,7 +68,8 @@ public class ViewSubmitted extends AppCompatActivity
     {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        params.put("Query", "select * from users");
+        params.put("Query", "select userID,name,phone,date," +
+                "institute,subject,supervisor,replayDate from users");
         client.post("http://104.197.212.107:3000/query", params, new TextHttpResponseHandler()
                 {
                     @Override
@@ -108,7 +109,7 @@ public class ViewSubmitted extends AppCompatActivity
                     inquiryData.setSubject(jsonObject.getString("subject"));
                     inquiryData.setSupervisor(jsonObject.getString("supervisor"));
                     inquiryData.setReplyDate(jsonObject.getString("replayDate"));
-                    inquiryData.setSignature(jsonObject.getString("signature"));
+                    //inquiryData.setSignature(jsonObject.getString("signature"));
 
                     inquiryDataArray.add(inquiryData);
                 }

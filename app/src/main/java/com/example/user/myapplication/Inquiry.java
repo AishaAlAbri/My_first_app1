@@ -172,7 +172,7 @@ public class Inquiry extends AppCompatActivity {
                         Toast.makeText(Inquiry.this,"Submitted Successfully",Toast.LENGTH_LONG).show();
                         finish();
 
-                        Log.d("Result: ", res);
+                        //Log.d("Result: ", res);
                     }
 
                     @Override
@@ -199,7 +199,7 @@ public class Inquiry extends AppCompatActivity {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
         Bitmap bitmap = drawingView.getDrawingCache();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 50, byteArrayOutputStream);
         byte[] byteArray = byteArrayOutputStream .toByteArray();
         String signature = Base64.encodeToString(byteArray, Base64.DEFAULT);
         //Log.d("bitmap Array: ", signature);
