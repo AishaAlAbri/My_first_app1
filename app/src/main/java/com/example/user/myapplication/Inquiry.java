@@ -79,11 +79,9 @@ public class Inquiry extends AppCompatActivity {
     private void setDateField() {
         final Calendar newCalendar = Calendar.getInstance();
 
-        etReplyDate.setOnClickListener(new View.OnClickListener()
-        {
+        etReplyDate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(new Date());
                 datePickerDialogStart.getDatePicker().setMinDate(cal.getTimeInMillis());
@@ -122,7 +120,7 @@ public class Inquiry extends AppCompatActivity {
                     {
                         // called when response HTTP status is "200 OK
                         //tvResult.setText(res);
-                        Log.d("Result: ",res);
+                        Log.d("Result: ", res);
                         try
                             {
                                 supervisorData = new ArrayList<String>();
@@ -156,33 +154,53 @@ public class Inquiry extends AppCompatActivity {
         );
     }
 
-    public void onSend(View v)
-    {
+    public void onSend(View v) {
+        if (etName.getText().length() == 0) {
+            etName.setError("Please Enter your name");
+        }
+        if (etPhone.getText().length() == 0 || etPhone.getText().length() != 8) {
+            etPhone.setError("Please check your phone number");
+        }
+        if (etEduInstitute.getText().length() == 0) {
+            etEduInstitute.setError("Please write institute name");
+        }
+        if (etSubject.getText().length() == 0) {
+            etSubject.setError("Please write Subject name");
+        }
+        if (etReplyDate.getText().length() == 0){
+            etReplyDate.setError("Please insert data ");
+        }
 
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-        params.put("Insert", getSqlStatement());
-        client.post("http://104.197.212.107:3000/Insert", params, new TextHttpResponseHandler()
-                {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, String res)
-                    {
-                        // called when response HTTP status is "200 OK
-                        //tvResult.setText(res);
-                        Toast.makeText(Inquiry.this,"Submitted Successfully",Toast.LENGTH_LONG).show();
-                        finish();
 
-                        //Log.d("Result: ", res);
+        if (etName.getText().toString().length() != 0 &&
+                etPhone.getText().length() == 8  &&
+                etEduInstitute.getText().toString().length() != 0 &&
+                etSubject.getText().toString().length() != 0 &&
+                etReplyDate.getText().toString().length() == 0
+
+                ) {
+            AsyncHttpClient client = new AsyncHttpClient();
+            RequestParams params = new RequestParams();
+            params.put("Insert", getSqlStatement());
+            client.post("http://104.197.212.107:3000/Insert", params, new TextHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, String res) {
+                            // called when response HTTP status is "200 OK
+                            //tvResult.setText(res);
+                            Toast.makeText(Inquiry.this, "Submitted Successfully", Toast.LENGTH_LONG).show();
+                            finish();
+
+                            //Log.d("Result: ", res);
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, String res, Throwable t) {
+                            // called when response HTTP status is "4XX" (eg. 401, 403, 404)
+                            Log.d("Error: ", res);
+                        }
                     }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, String res, Throwable t)
-                    {
-                        // called when response HTTP status is "4XX" (eg. 401, 403, 404)
-                        Log.d("Error: ", res);
-                    }
-                }
-        );
+            );
+        }
     }
 
     private String getSqlStatement()
