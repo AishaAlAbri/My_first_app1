@@ -69,7 +69,7 @@ public class InquiryData implements Serializable
 
     public Bitmap getSignature()
     {
-        byte[] decodedString = Base64.decode(signature, Base64.DEFAULT);
+        byte[] decodedString = Base64.decode(signature, Base64.NO_WRAP);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         Log.d("image: ",signature);
         return decodedByte;

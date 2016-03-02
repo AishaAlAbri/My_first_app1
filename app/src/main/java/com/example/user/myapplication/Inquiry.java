@@ -176,7 +176,7 @@ public class Inquiry extends AppCompatActivity {
                 etPhone.getText().length() == 8  &&
                 etEduInstitute.getText().toString().length() != 0 &&
                 etSubject.getText().toString().length() != 0 &&
-                etReplyDate.getText().toString().length() == 0
+                etReplyDate.getText().toString().length() != 0
 
                 ) {
             AsyncHttpClient client = new AsyncHttpClient();
@@ -215,11 +215,14 @@ public class Inquiry extends AppCompatActivity {
         String replyDate = etReplyDate.getText().toString();
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-
+        drawingView.setDrawingCacheEnabled(true);
+        drawingView.buildDrawingCache(true);
         Bitmap bitmap = drawingView.getDrawingCache();
+
+        //Bitmap bitmap = Bitmap.createBitmap(linearDrawing.getWidth(),linearDrawing.getHeight(), Bitmap.Config.ARGB_8888);
         bitmap.compress(Bitmap.CompressFormat.PNG, 50, byteArrayOutputStream);
         byte[] byteArray = byteArrayOutputStream .toByteArray();
-        String signature = Base64.encodeToString(byteArray, Base64.DEFAULT);
+        String signature = Base64.encodeToString(byteArray, Base64.NO_WRAP);
         //Log.d("bitmap Array: ", signature);
 
 
@@ -227,6 +230,7 @@ public class Inquiry extends AppCompatActivity {
                 "replayDate,signature) values " +
                 "('"+name+"',"+phone+",'"+date+"','"+eduInstitute+"'," +
                 "'"+subject+"','"+supervisor+"','"+replyDate+"','"+signature+"')";
+        drawingView.setDrawingCacheEnabled(false);
        /* try
         {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.openFileOutput("config.txt", this.MODE_PRIVATE));

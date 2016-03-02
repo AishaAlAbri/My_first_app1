@@ -102,6 +102,7 @@ public class DrawingView extends View
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         getParent().requestDisallowInterceptTouchEvent(true);
+
         float x = event.getX();
         float y = event.getY();
 
