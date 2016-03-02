@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
@@ -168,6 +169,9 @@ public class Inquiry extends AppCompatActivity {
                     {
                         // called when response HTTP status is "200 OK
                         //tvResult.setText(res);
+                        Toast.makeText(Inquiry.this,"Submitted Successfully",Toast.LENGTH_LONG).show();
+                        finish();
+
                         Log.d("Result: ", res);
                     }
 

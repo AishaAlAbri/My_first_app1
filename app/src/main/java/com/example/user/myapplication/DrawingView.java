@@ -53,10 +53,6 @@ public class DrawingView extends View
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        /*mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-        mCanvas = new Canvas(mBitmap);
-        Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ev);
-        mCanvas.drawBitmap(bmp, 0, 0, mPaint);*/
         mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
     }
@@ -67,9 +63,7 @@ public class DrawingView extends View
         canvas.drawBitmap( mBitmap, 0, 0, mBitmapPaint);
         canvas.drawPath( mPath,  mPaint);
         canvas.drawPath( circlePath,  circlePaint);
-//            canvas.save();
-//            pauseButton.draw(canvas);
-//            canvas.restore();
+
 
     }
 
